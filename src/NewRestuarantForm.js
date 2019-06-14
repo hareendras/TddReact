@@ -16,7 +16,7 @@ export default class NewRestuarantForm extends Component {
       <div>
         <input
           type="text"
-          value="{inputText}"
+          value={inputText}
           onChange={this.handleTextChange}
           data-test="newRetuarantName"
         />
