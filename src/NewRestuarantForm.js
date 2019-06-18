@@ -12,6 +12,7 @@ export default class NewRestuarantForm extends Component {
   };
   render() {
     const { inputText } = this.state;
+
     return (
       <div>
         <input
