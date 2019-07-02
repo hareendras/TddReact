@@ -13,7 +13,9 @@ describe("NewRestuarantForm", () => {
         .find("[data-test='newRetuarantName']")
         .simulate("change", { target: { value: "Sushi Place" } });
 
-      wrapper.find("[data-test='saveNewRestuarantButton']").simulate("click");
+      wrapper
+        .find("button[data-test='saveNewRestuarantButton']")
+        .simulate("click");
       expect(saveHandler).toHaveBeenCalledWith("Sushi Place");
     });
   });
