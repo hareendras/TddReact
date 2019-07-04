@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Button } from "react-materialize";
+import { Button, TextInput } from "react-materialize";
 
-export default class NewRestuarantForm extends Component {
+export default class NewRestuarantForm extends React.Component {
   state = { inputText: "" };
   handleTextChange = event => {
     this.setState({ inputText: event.target.value });
@@ -16,8 +16,8 @@ export default class NewRestuarantForm extends Component {
 
     return (
       <div>
-        <input
-          type="text"
+        <TextInput
+          label="Restuarant Name"
           value={inputText}
           onChange={this.handleTextChange}
           data-test="newRetuarantName"
