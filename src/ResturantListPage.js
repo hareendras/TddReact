@@ -1,7 +1,7 @@
 import React from "react";
 import NewRestuarantForm from "./NewRestuarantForm";
 import ResturantList from "./ResturantList";
-import { Button } from "react-materialize";
+import { Button, Col, Row } from "react-materialize";
 
 export default class ResturantListPage extends React.Component {
   state = { restuarantNames: [], showNewResturantForm: false };
@@ -19,16 +19,22 @@ export default class ResturantListPage extends React.Component {
     const { restuarantNames, showNewResturantForm } = this.state;
     return (
       <div>
-        <Button
-          data-test="addRestuarantButton"
-          onClick={this.handleShowNewResturantForm}
-        >
-          Add Retuarant
-        </Button>
-        {showNewResturantForm ? (
-          <NewRestuarantForm onSave={this.handleAddReturant} />
-        ) : null}
-        <ResturantList restuarants={restuarantNames} />
+        <Row>
+          <Button
+            data-test="addRestuarantButton"
+            onClick={this.handleShowNewResturantForm}
+          >
+            Add Retuarant
+          </Button>
+        </Row>
+        <Row>
+          {showNewResturantForm ? (
+            <NewRestuarantForm onSave={this.handleAddReturant} />
+          ) : null}
+        </Row>
+        <Row>
+          <ResturantList restuarants={restuarantNames} />
+        </Row>
       </div>
     );
   }

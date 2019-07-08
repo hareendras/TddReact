@@ -10,7 +10,7 @@ describe("NewRestuarantForm", () => {
       const wrapper = mount(<NewRetuarantForm onSave={saveHandler} />);
 
       wrapper
-        .find("[data-test='newRetuarantName']")
+        .find("input[data-test='newRetuarantName']")
         .simulate("change", { target: { value: "Sushi Place" } });
 
       wrapper
