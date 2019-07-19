@@ -15,8 +15,14 @@ export default class ResturantListPage extends React.Component {
   handleShowNewResturantForm = () => {
     this.setState({ showNewResturantForm: true });
   };
+
+  renderNewRestuarantForm = () => {
+    if (this.state.showNewResturantForm) {
+      return <NewRestuarantForm onSave={this.handleAddReturant} />;
+    }
+  };
   render() {
-    const { restuarantNames, showNewResturantForm } = this.state;
+    const { restuarantNames } = this.state;
     return (
       <div>
         <Row>
@@ -27,11 +33,7 @@ export default class ResturantListPage extends React.Component {
             Add Retuarant
           </Button>
         </Row>
-        <Row>
-          {showNewResturantForm ? (
-            <NewRestuarantForm onSave={this.handleAddReturant} />
-          ) : null}
-        </Row>
+        <Row>{this.renderNewRestuarantForm()}</Row>
         <Row>
           <ResturantList restuarants={restuarantNames} />
         </Row>
