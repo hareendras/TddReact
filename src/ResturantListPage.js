@@ -1,7 +1,7 @@
 import React from "react";
 import NewRestuarantForm from "./NewRestuarantForm";
 import ResturantList from "./ResturantList";
-import { Button, Col, Row } from "react-materialize";
+import { Button, Col, Row, Modal } from "react-materialize";
 
 export default class ResturantListPage extends React.Component {
   state = { restuarantNames: [], showNewResturantForm: false };
@@ -10,30 +10,31 @@ export default class ResturantListPage extends React.Component {
       showNewResturantForm: false,
       restuarantNames: [newRetuarantName, ...state.restuarantNames]
     }));
+    $("#addRestaurantModel").modal("close");
   };
 
   handleShowNewResturantForm = () => {
     this.setState({ showNewResturantForm: true });
   };
 
-  renderNewRestuarantForm = () => {
+  /*renderNewRestuarantForm = () => {
     if (this.state.showNewResturantForm) {
       return <NewRestuarantForm onSave={this.handleAddReturant} />;
     }
-  };
+  };*/
   render() {
     const { restuarantNames } = this.state;
     return (
       <div>
-        <Row>
-          <Button
-            data-test="addRestuarantButton"
-            onClick={this.handleShowNewResturantForm}
-          >
-            Add Retuarant
-          </Button>
-        </Row>
-        <Row>{this.renderNewRestuarantForm()}</Row>
+        <Modal
+          id="addRestaurantModel"
+          header="New Restaurant"
+          trigger={
+            <Button data-test="addRestuarantButton">Add Retuarant</Button>
+          }
+        >
+          <NewRestuarantForm onSave={this.handleAddReturant} />{" "}
+        </Modal>
         <Row>
           <ResturantList restuarants={restuarantNames} />
         </Row>
